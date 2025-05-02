@@ -23,4 +23,4 @@ The developer is not responsible for any loss or liability arising from third pa
 By using the application, the user agrees that he does so at his own risk and
 that the developer is not liable for any damage that may result from misuse or misuse of the application.
 
-###Copyright (c) 2025 HBDigitalLabs
+### Copyright (c) 2025 HBDigitalLabs
