@@ -10,10 +10,10 @@ This project uses the following open source libraries.
 - **Copyright:** © 2020 Mark Heath  
 - **Source:** [NAudio GitHub](https://github.com/naudio/NAudio)  
 
-### Terminal.GUI  
-- **License Type:** [MIT License](./Terminal.Gui.LICENSE.txt)  
-- **Copyright:** © 2007-2011 Novell Inc, © 2017 Microsoft Corp  
-- **Source:** [Terminal.GUI GitHub](https://github.com/gui-cs/Terminal.Gui)
+### Windows Forms (WinForms)
+- **License Type:** [MIT License](https://github.com/dotnet/winforms/blob/main/LICENSE.TXT)
+- **Copyright:** © .NET Foundation and Contributors
+- **Source:** [WinForms GitHub](https://github.com/dotnet/winforms)
 
 ### Disclaimer:
 This application serves only its specific purpose.
