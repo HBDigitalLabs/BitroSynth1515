@@ -1,5 +1,5 @@
 # BitroSynth1515 
-This project is a synthesizer that produces 4 different waveforms (Sawtooth, Noise, Square, Triangle)
+This project is a synthesizer that produces 4 different waveforms (Sawtooth, Noise,Sine,Pink Noise, Square, Triangle)
 NAudio and WinForms libraries are used
 
 ## 📜 Third-Party Licenses  
