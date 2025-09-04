@@ -1,26 +1,22 @@
-# BitroSynth1515 
-This project is a synthesizer that produces 4 different waveforms (Sawtooth, Noise,Sine,Pink Noise, Square, Triangle)
-NAudio and WinForms libraries are used
+# BitroSynth1515
 
-## 📜 Third-Party Licenses  
-This project uses the following open source libraries.
+This project is a synthesizer with a graphical interface built using Avalonia UI and a synthesis/playback engine implemented in Rust. It supports multiple waveforms including Sawtooth, Noise, Sine, Pink Noise, Square, and Triangle.
 
-### NAudio  
-- **License Type:** [MIT License](./NAudio.LICENSE.txt)  
-- **Copyright:** © 2020 Mark Heath  
-- **Source:** [NAudio GitHub](https://github.com/naudio/NAudio)  
+## 📜 Third-Party Licenses
+All third-party libraries used in this project are documented in the `LICENSES` folder in the root directory.
 
-### Windows Forms (WinForms)
-- **License Type:** [MIT License](https://github.com/dotnet/winforms/blob/main/LICENSE.TXT)
-- **Copyright:** © .NET Foundation and Contributors
-- **Source:** [WinForms GitHub](https://github.com/dotnet/winforms)
+### Avalonia UI
+- **License Type:** [MIT License](./LICENSES/Avalonia.LICENSE.txt)
+- **Copyright:** © Avalonia Contributors
+- **Source:** [Avalonia GitHub](https://github.com/AvaloniaUI/Avalonia)
 
-### Disclaimer:
-This application serves only its specific purpose.
-Any data or features obtained through the application are intended for personal and lawful uses only.
-Any damage that may occur as a result of the use of the application,
-The developer is not responsible for any loss or liability arising from third parties.
-By using the application, the user agrees that he does so at his own risk and
-that the developer is not liable for any damage that may result from misuse or misuse of the application.
+### Rust Libraries
+- **License Type:** Refer to each library in the `LICENSES` folder
+- **Copyright:** Refer to each library
+- **Source:** Refer to each library’s repository
+
+### License
+By using this application, you agree to the terms of the license for BitroSynth1515.
+The license can be found in the `LICENSES` folder in the root of this repository.
 
 ### Copyright (c) 2025 HBDigitalLabs
