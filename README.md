@@ -6,8 +6,8 @@ This project is a synthesizer with a graphical interface built using Avalonia UI
 All third-party libraries used in this project are documented in the `LICENSES` folder in the root directory.
 
 ### Avalonia UI
-- **License Type:** [MIT License](./LICENSES/Avalonia.LICENSE.txt)
-- **Copyright:** © Avalonia Contributors
+- **License Type:** [MIT License](https://github.com/AvaloniaUI/Avalonia/blob/master/licence.md)
+- **Copyright:** © AvaloniaUI OÜ All Rights Reserved
 - **Source:** [Avalonia GitHub](https://github.com/AvaloniaUI/Avalonia)
 
 ### Rust Libraries
@@ -16,7 +16,6 @@ All third-party libraries used in this project are documented in the `LICENSES` 
 - **Source:** Refer to each library’s repository
 
 ### License
-By using this application, you agree to the terms of the license for BitroSynth1515.
-The license can be found in the `LICENSES` folder in the root of this repository.
+All third-party libraries used in this project are documented in the LICENSES folder at the root of the source code
 
 ### Copyright (c) 2025 HBDigitalLabs
