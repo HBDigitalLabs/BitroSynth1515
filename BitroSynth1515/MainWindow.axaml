@@ -1,0 +1,238 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        Width="800" Height="600"
+        x:Class="BitroSynth1515.MainWindow"
+		Icon="avares:assets/icons/BitroSynth1515_Icon.ico"
+
+		xmlns:vm="clr-namespace:BitroSynth1515.ViewModels"
+        x:DataType="vm:MainViewModel"
+
+
+        Title="BitroSynth1515">
+    <Grid RowDefinitions="Auto,Auto, *, Auto">
+
+
+        <Border Grid.Row="0" Height="25" BorderBrush="#080A0B">
+  			<Border.Background>
+    			<ImageBrush Stretch="Fill" Source="avares:/assets/images/Dark_Gray_Gradient_2.png" />
+  			</Border.Background>
+
+  			<Border.Styles>
+    			<Style Selector="Menu">
+      				<Setter Property="Foreground" Value="#00E5FF"/>
+      				<Setter Property="Background" Value="Transparent"/>
+    			</Style>
+
+    			<Style Selector="MenuItem">
+      				<Setter Property="Foreground" Value="#C7D6DA"/>
+      				<Setter Property="Background" Value="Transparent"/>
+      				<Setter Property="Padding" Value="8,6"/>
+      				<Setter Property="FontSize" Value="14"/>
+    			</Style>
+
+    			<Style Selector="MenuItem:pointerover">
+      				<Setter Property="Background" Value="#0F1418"/>
+      				<Setter Property="Foreground" Value="#E6EFF2"/>
+    			</Style>
+
+    			<Style Selector="Button.toolbar">
+      				<Setter Property="Background" Value="Transparent"/>
+      				<Setter Property="BorderBrush" Value="Transparent"/>
+      				<Setter Property="Padding" Value="6"/>
+      				<Setter Property="CornerRadius" Value="6"/>
+      				<Setter Property="MinWidth" Value="48"/>
+      				<Setter Property="MinHeight" Value="34"/>
+      				<Setter Property="Foreground" Value="#C7D6DA"/>
+      				<Setter Property="FontSize" Value="12"/>
+    			</Style>
+    			<Style Selector="Button.toolbar:pointerover">
+      				<Setter Property="Background" Value="#0F1418"/>
+      				<Setter Property="Foreground" Value="#E6EFF2"/>
+    			</Style>
+  			</Border.Styles>
+
+  			<DockPanel Margin="5,0">
+    			<Menu DockPanel.Dock="Left">
+      				<MenuItem Header="_File">
+        				<MenuItem x:Name="openMenuItem" Header="_Open" Click="OpenJSONFile" />
+        				<MenuItem x:Name="saveAsMenuItem" Header="_Save As" Click="SaveAsJSONFile" />
+        				<MenuItem x:Name="exportAudioMenuItem" Header="_Export Audio" Click="ExportAudio" />
+      				</MenuItem>
+
+      				<MenuItem Header="_Tools">
+        				<MenuItem x:Name="noteWithGUIMenuItem" Header="_Create Note With GUI" Click="ShowCreateNoteWithGUIWindow" />
+      				</MenuItem>
+
+      				<MenuItem Header="_Settings" Click="ShowSettingsWindow" />
+
+      				<MenuItem Header="_Help">
+        				<MenuItem x:Name="aboutMenuItem" Header="_About" Click="ShowAboutWindow" />
+      				</MenuItem>
+    			</Menu>
+
+  			</DockPanel>
+		</Border>
+
+
+		<Border Height="70" Grid.Row="1" BorderThickness="0,3,0,3" BorderBrush="Black">
+        	<Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto" >
+
+				<Grid.Background>
+					<ImageBrush Stretch="Fill" Source="avares:/assets/images/Dark_Gray_Gradient.png" />
+				</Grid.Background>
+
+				<Grid.Styles>
+					<Style Selector="Image">
+						<Setter Property="Height" Value="50"/>
+						<Setter Property="Width" Value="50"/>
+					</Style>
+
+					<Style Selector="Button">
+						<Setter Property="Background" Value="Transparent"/>
+						<Setter Property="Height" Value="50"/>
+						<Setter Property="Width" Value="50"/>
+					</Style>
+					<Style Selector="Button:pointerover /template/ContentPresenter">
+						<Setter Property="Background" Value="Transparent"/>
+						<Setter Property="Opacity" Value="1.0"/>
+					</Style>
+
+					<Style Selector="Border">
+						<Setter Property="Background" Value="Black"/>
+						<Setter Property="BorderBrush" Value="Cyan"/>
+						<Setter Property="BorderThickness" Value="2"/> 
+						<Setter Property="Height" Value="35"/>
+					</Style>
+
+					<Style Selector="Rectangle">
+						<Setter Property="Fill" Value="Cyan"/>
+						<Setter Property="Height" Value="50"/>
+						<Setter Property="Width" Value="2"/>
+						<Setter Property="Margin" Value="5"/>
+					</Style>
+				</Grid.Styles>
+
+				
+				<StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="2">
+    				<Button Margin="4,0,0,0" Click="PlaySound" x:Name="playButton">
+        				<Image Source="avares:/assets/images/Play_Icon.png"/>
+    				</Button>
+    				<Button Click="StopSoundForButton" x:Name="stopButton">
+    				    <Image Source="avares:/assets/images/Stop_Icon.png"/>    
+    				</Button>
+   					<Button Click="ShowSeekBarWindow" x:Name="seekBarButton">
+        				<Image Source="avares:/assets/images/Seek_Bar_Icon.png"/>    
+    				</Button>
+				</StackPanel>
+
+				<Rectangle Margin="2,5,5,5" Grid.Column="1" />
+
+				<Border Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" >
+					<Label Width="135" VerticalContentAlignment="Center" x:Name="timerLabel" Foreground="Cyan" FontSize="20" >00:00:00:000</Label>
+        		</Border>
+            
+            	<Rectangle Grid.Column="3"/>
+            	
+				<Border Width="200"  Grid.Column="4">
+					<Rectangle x:Name="gainBar" Margin="5,0" HorizontalAlignment="Left" Width="0" Height="20"/>
+            	</Border>
+
+        	</Grid>
+		</Border>
+		
+		<Border Grid.Row="2" Background="#151515" Padding="10">
+
+  			<Border.Styles>
+    			<Style Selector="TextBox">
+      				<Setter Property="CaretBrush" Value="Cyan" />
+      				<Setter Property="AcceptsReturn" Value="True"/>
+      				<Setter Property="MinHeight" Value="90"/>  
+      				<Setter Property="Margin" Value="0"/>
+      				<Setter Property="TextWrapping" Value="Wrap"/>
+      				<Setter Property="FontSize" Value="15"/>
+      				<Setter Property="Foreground" Value="#E6EFF2"/>
+      				<Setter Property="Background" Value="#0B0F14"/>
+      				<Setter Property="BorderBrush" Value="#223038"/>
+      				<Setter Property="BorderThickness" Value="1"/>
+      				<Setter Property="Padding" Value="8"/>
+      				<Setter Property="CornerRadius" Value="6"/>
+    			</Style>
+
+				<Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+  					<Setter Property="BorderBrush" Value="#00E5FF"/>
+  					<Setter Property="BorderThickness" Value="2"/>
+  					<Setter Property="Background" Value="#0B0F14"/>
+  					<Setter Property="CornerRadius" Value="6"/>
+  					<Setter Property="Padding" Value="6"/>
+  					<Setter Property="Opacity" Value="1"/>
+
+				</Style>
+
+    			<Style Selector="TextBox:pointerover">
+      				<Setter Property="BorderBrush" Value="#00E5FF"/>
+      				<Setter Property="Background" Value="#0E141A"/>
+    			</Style>
+
+    			<Style Selector="TextBox:focus">
+      				<Setter Property="BorderBrush" Value="#00E5FF"/>
+      				<Setter Property="BorderThickness" Value="2"/>
+      				<Setter Property="Foreground" Value="#E6EFF2"/>
+      				<Setter Property="Background" Value="#0B0F14"/>
+    			</Style>
+  			</Border.Styles>
+
+  			<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+
+    			<Border Background="#07090B" Margin="0" BorderThickness="1" BorderBrush="#0F3033" CornerRadius="8" Padding="12">
+      
+     				<StackPanel>
+        				<TextBlock Text="Channels" Foreground="#00E5FF" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,10"/>
+
+        				<Grid>
+          					<Grid.ColumnDefinitions>
+            					<ColumnDefinition Width="*" />
+            					<ColumnDefinition Width="*" />
+          					</Grid.ColumnDefinitions>
+            				<Grid.RowDefinitions>
+            					<RowDefinition Height="Auto" />
+            					<RowDefinition Height="Auto" />
+          					</Grid.RowDefinitions>
+
+          					<TextBox Grid.Row="0" Grid.Column="0"
+                   				Text="{Binding Channel1Text, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                   				Watermark="Channel-1"
+                   				Margin="0,0,8,8"/>
+          
+          					<TextBox Grid.Row="0" Grid.Column="1"
+                   				Text="{Binding Channel2Text, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                   				Watermark="Channel-2"
+                   				Margin="0,0,0,8"/>
+
+			           		<TextBox Grid.Row="1" Grid.Column="0"
+               			    	Text="{Binding Channel3Text, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                   				Watermark="Channel-3"
+                   				Margin="0,0,8,0"/>
+
+          					<TextBox Grid.Row="1" Grid.Column="1"
+                   				Text="{Binding Channel4Text, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                   				Watermark="Channel-4"/>
+        				</Grid>
+      				</StackPanel>
+
+    			</Border>
+  			</ScrollViewer>
+		</Border>
+
+
+        <Border BorderThickness="0,3,0,0" BorderBrush="Black"  Height="28" Grid.Row="3" >
+			<Border.Background>
+				<ImageBrush Stretch="Fill" Source="avares:/assets/images/Dark_Gray_Gradient_2.png" />
+			</Border.Background>
+			<TextBlock  Margin="5,0" Foreground="Cyan" x:Name="statusBar" VerticalAlignment="Center" >Welcome to BitroSynth1515</TextBlock>
+		</Border>
+        
+    </Grid>
+</Window>

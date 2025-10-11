@@ -1,0 +1,83 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="160"
+        x:Class="BitroSynth1515.SeekBarWindow"
+        Width="320" Height="150"
+        CanResize="False"
+        SizeToContent="Manual"
+        Title="Seek"
+        Background="#151515">
+
+    <StackPanel Margin="10" Spacing="10">
+
+        <StackPanel.Styles>
+                <Style Selector="TextBox">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="Black"/>
+                </Style>
+
+                <Style Selector="TextBox:pointerover">
+                    <Setter Property="BorderBrush" Value="Cyan"/>
+                    <Setter Property="Background" Value="Black"/>
+                </Style>
+
+				<Style Selector="TextBox:focus /template/ Border#PART_BorderElement"> 
+					<Setter Property="BorderBrush" Value="Cyan"/> 
+					<Setter Property="BorderThickness" Value="2"/> 
+					<Setter Property="Background" Value="Black"/> 
+				</Style>
+
+    			<Style Selector="TextBox:focus">
+        			<Setter Property="BorderBrush" Value="Cyan"/>
+        			<Setter Property="BorderThickness" Value="2"/>
+        			<Setter Property="Background" Value="Black"/>
+					<Setter Property="Foreground" Value="White"/> 
+    			</Style>
+            </StackPanel.Styles>
+
+        <TextBox x:Name="infoLabel"
+         BorderThickness="0"
+         TextWrapping="Wrap"
+         AcceptsReturn="True"
+         IsReadOnly="True"
+         Height="80"
+         FontSize="16"/>
+
+
+        <Grid ColumnSpacing="5" ColumnDefinitions="*,Auto">
+            <TextBox x:Name="msTextBox"
+                Height="35"
+                BorderBrush="Gray"
+                BorderThickness="2"
+                FontSize="14"
+                Watermark="Enter milliseconds"
+                Grid.Column="0">
+            </TextBox>
+
+            <Button Click="Apply"
+                Height="35"
+                Width="70"
+                Background="Black"
+                Foreground="Cyan"
+                BorderBrush="Cyan"
+                BorderThickness="2"
+                FontWeight="Bold"
+                Content="Apply"
+                Grid.Column="1"
+            >
+                <Button.Styles>
+                    <Style Selector="Button:pointerover">
+                        <Setter Property="Background" Value="#202020"/>
+                    </Style>
+                    <Style Selector="Button:pressed">
+                        <Setter Property="Background" Value="#303030"/>
+                    </Style>
+                </Button.Styles>
+            </Button>
+        </Grid>
+
+
+    </StackPanel>
+</Window>
