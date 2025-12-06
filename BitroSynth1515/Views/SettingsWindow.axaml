@@ -1,0 +1,168 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="500"
+        x:Class="BitroSynth1515.SettingsWindow"
+        Width="500" Height="500"
+        Icon="avares://BitroSynth1515/Assets/icons/Settings_Icon.ico"
+        Title="Settings">
+
+  <!-- GLOBAL STYLES: dark + cyan accent -->
+  <Window.Styles>
+    <!-- Color vars (not real resources but convenient to copy) -->
+    <!-- TextBox -->
+    <Style Selector="TextBox">
+      <Setter Property="Background" Value="#0B0F14"/>
+      <Setter Property="Foreground" Value="#E6EFF2"/>
+      <Setter Property="BorderBrush" Value="#2B3340"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="Padding" Value="8"/>
+      <Setter Property="CornerRadius" Value="6"/>
+      <Setter Property="FontSize" Value="14"/>
+    </Style>
+    <Style Selector="TextBox:pointerover">
+      <Setter Property="BorderBrush" Value="{DynamicResource ElectricBlueColor}"/>
+      <Setter Property="Background" Value="#0E141A"/>
+    </Style>
+    <Style Selector="TextBox:focus">
+      <Setter Property="BorderBrush" Value="{DynamicResource ElectricBlueColor}"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="Background" Value="#0B0F14"/>
+    </Style>
+
+    <!-- RadioButton -->
+    <Style Selector="RadioButton">
+      <Setter Property="Foreground" Value="#E6EFF2"/>
+      <Setter Property="FontSize" Value="14"/>
+      <Setter Property="Margin" Value="0,4"/>
+      <Setter Property="Padding" Value="6,2"/>
+    </Style>
+    <Style Selector="RadioButton:pointerover /template/ContentPresenter">
+      <Setter Property="Background" Value="#121417"/>
+      <Setter Property="Foreground" Value="{DynamicResource ElectricBlueColor}"/>
+      <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+    <Style Selector="RadioButton:checked /template/ContentPresenter">
+      <Setter Property="Background" Value="{DynamicResource ElectricBlueColor}"/>
+      <Setter Property="Foreground" Value="#0B0F14"/>
+      <Setter Property="CornerRadius" Value="4"/>
+      <Setter Property="Padding" Value="6,2"/>
+    </Style>
+
+    <!-- Button -->
+    <Style Selector="Button">
+      <Setter Property="Background" Value="#07090B"/>
+      <Setter Property="Foreground" Value="{DynamicResource ElectricBlueColor}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ElectricBlueColor}"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="Padding" Value="10,6"/>
+      <Setter Property="CornerRadius" Value="6"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    <Style Selector="Button:pointerover /template/ContentPresenter">
+      <Setter Property="Background" Value="#07090B"/>
+      <Setter Property="Foreground" Value="#E6EFF2"/>
+      <Setter Property="BorderBrush" Value="#E6EFF2"/>
+    </Style>
+    <Style Selector="Button:pressed /template/ContentPresenter">
+      <Setter Property="Background" Value="#07090B"/>
+      <Setter Property="Foreground" Value="#E6EFF2"/>
+      <Setter Property="BorderBrush" Value="#E6EFF2"/>
+    </Style>
+
+    <!-- TextBlock headings -->
+    <Style Selector="TextBlock.heading">
+      <Setter Property="FontSize" Value="15"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="Foreground" Value="{DynamicResource ElectricBlueColor}"/>
+      <Setter Property="Margin" Value="0,0,0,8"/>
+    </Style>
+    <Style Selector="TextBlock.sub">
+      <Setter Property="FontSize" Value="12"/>
+      <Setter Property="Foreground" Value="#C7D6DA"/>
+      <Setter Property="Margin" Value="0,0,0,6"/>
+    </Style>
+  </Window.Styles>
+
+  <!-- WINDOW BACKGROUND -->
+  <Grid>
+    <Grid.Background>
+      <!-- subtle horizontal gradient using existing asset fallback -->
+      <ImageBrush Stretch="Fill" Source="avares://BitroSynth1515/Assets/images/Gray_Gradient.png"/>
+    </Grid.Background>
+
+    <!-- Centered content card -->
+    <Border Margin="16" Padding="12" CornerRadius="10"
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            BorderThickness="1" BorderBrush="#1C1F24">
+      <Border.Background>
+        <!-- slightly transparent dark surface to let outer gradient show -->
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+          <GradientStop Offset="0" Color="#0D1114"/>
+          <GradientStop Offset="1" Color="#0B0F14"/>
+        </LinearGradientBrush>
+      </Border.Background>
+
+      <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" ColumnDefinitions="*,*">
+        <!-- Header spanning two columns -->
+        <StackPanel Grid.ColumnSpan="2" Orientation="Vertical" Margin="6,2,6,12">
+          <TextBlock Text="General audio and display settings" Classes="sub"/>
+        </StackPanel>
+
+        <!-- Sample Rate (left column) -->
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="8" >
+          <TextBlock Text="Sample Rate" Foreground="#C7D6DA" Margin="0,0,0,6" />
+          <TextBox Watermark="e.g. 44100" x:Name="sampleRateTextBox" />
+        </StackPanel>
+
+        <!-- Bits Per Sample (right column) -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="8">
+          <TextBlock Text="Bits Per Sample" Foreground="#C7D6DA" Margin="0,0,0,6"/>
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <RadioButton Content="16" GroupName="bits" VerticalAlignment="Center"/>
+            <RadioButton Content="8" GroupName="bits" x:Name="bit8Radio" VerticalAlignment="Center"/>
+          </StackPanel>
+          <TextBlock Text="Choose output bit depth." Foreground="#8F9A9E" FontSize="12" Margin="0,8,0,0"/>
+        </StackPanel>
+
+        <!-- Displayed Channel (spans columns to give space) -->
+        <Border Grid.Row="2" Grid.ColumnSpan="2" Margin="8" Padding="8" CornerRadius="6" BorderThickness="1" BorderBrush="#1E2429" Background="#07090B">
+          <StackPanel>
+            <TextBlock Text="Displayed Channel" Foreground="#C7D6DA" FontWeight="SemiBold" Margin="0,0,0,8"/>
+            <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="Auto">
+              <RadioButton Grid.Column="0" Content="Channel-1" GroupName="channels" x:Name="channel_1"/>
+              <RadioButton Grid.Column="1" Content="Channel-2" GroupName="channels" x:Name="channel_2"/>
+              <RadioButton Grid.Column="2" Content="Channel-3" GroupName="channels" x:Name="channel_3"/>
+              <RadioButton Grid.Column="3" Content="Channel-4" GroupName="channels" x:Name="channel_4"/>
+            </Grid>
+          </StackPanel>
+        </Border>
+
+        <!-- Info / Notes area (scrollable) -->
+        <Border Grid.Row="3" Grid.ColumnSpan="2" Margin="8" Padding="8" CornerRadius="6" BorderThickness="1" BorderBrush="#142027" Background="#081014">
+          <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <TextBox Grid.Row="3"
+                     x:Name="infoText"
+                     Foreground="#C7D6DA"
+                     Background="Transparent"
+                     IsReadOnly="True"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     BorderThickness="0"
+                     IsHitTestVisible="False"
+                     Text="Notes:
+- Sample rate must be a positive integer (e.g. 44100).
+- Change will apply after clicking Apply.
+- If you switch to 8-bit, some audio fidelity will be lost." />
+          </ScrollViewer>
+        </Border>
+
+        <!-- Button row -->
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="6,12,6,6" Spacing="12">
+          <Button Width="100" Height="40" Click="Apply">Apply</Button>
+        </StackPanel>
+      </Grid>
+    </Border>
+  </Grid>
+</Window>
